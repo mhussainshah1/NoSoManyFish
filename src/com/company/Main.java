@@ -25,8 +25,10 @@ import java.util.Map;
  */
 public class Main {
     static Map<String, List<String>> date = new HashMap<>();
+    static List<String> partnerList = new ArrayList<>();
 
     public static void main(String[] args) {
+        //You will start with a pre-set list of people (make 6 of them, 3 male, 3 female).
         List<Person> people = new ArrayList<>();
         people.add(new Person("Male", "Simon"));
         people.add(new Person("Male", "Michael"));
@@ -35,8 +37,7 @@ public class Main {
         people.add(new Person("Female", "Sarah"));
         people.add(new Person("Female", "Melanie"));
 
-        List<String> matchList;
-
+        List<Person> matchList;
 
         for (int i = 1; i < 11; i++) {
             matchList = new ArrayList<>();
@@ -48,13 +49,13 @@ public class Main {
             }
             // System.out.println(index1 +" "+index2);
 
-            matchList.add(people.get(index1).getName());
-            matchList.add(people.get(index2).getName());
+            matchList.add(people.get(index1));
+            matchList.add(people.get(index2));
 
-            String first = matchList.get(0);
-            String second = matchList.get(1);
+            String first = matchList.get(0).getName();
+            String second = matchList.get(1).getName();
 
-            List<String> partners = getPartners(first);//new ArrayList<>();
+            List<String> partners = matchList.get(0).getPartners();//new ArrayList<>();
             if (!isDuplicates(second, partners)) {
                 partners.add(second);
             }
@@ -100,7 +101,6 @@ public class Main {
 //                System.out.printf("%s %s %s %n",first,text[k],second);
 //            }
 
-
     }
 
     public static boolean isDuplicates(String partner, List<String> partners) {
@@ -113,6 +113,7 @@ public class Main {
     }
 
     public static List<String> getPartners(String first) {
-        return date.get(first);
+        partnerList.add(first);
+        return partnerList;
     }
 }
