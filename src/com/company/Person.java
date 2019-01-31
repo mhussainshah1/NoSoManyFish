@@ -6,7 +6,8 @@ public class Person {
 
     private String name;
     private String gender;
-    private List<Person> partners;
+    private Person partner; //current partner
+    private List<Person> partners; //list of all people date with
 
     public Person() {
     }
@@ -32,11 +33,20 @@ public class Person {
         this.name = name;
     }
 
+    public Person getPartner() {
+        return partner;
+    }
+
     public List<Person> getPartners() {
         return partners;
     }
 
     public void setPartners(List<Person> partners) {
         this.partners = partners;
+    }
+
+    public void setPartner(Person partner) {
+        this.partner = partner;
+        partners.add(partner);
     }
 }

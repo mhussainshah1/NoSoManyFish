@@ -24,7 +24,7 @@ import java.util.Map;
  * They should also be randomly generated, and should be a list.
  */
 public class Main {
-    static Map<String, List<String>> date = new HashMap<>();
+    static Map<Person, List<Person>> date = new HashMap<>();
     static List<String> partnerList = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -52,23 +52,23 @@ public class Main {
             matchList.add(people.get(index1));
             matchList.add(people.get(index2));
 
-            String first = matchList.get(0).getName();
-            String second = matchList.get(1).getName();
+            Person first = matchList.get(0);
+            Person second = matchList.get(1);
 
-            List<String> partners = matchList.get(0).getPartners();//new ArrayList<>();
+            List<Person> partners = matchList.get(0).getPartners();//new ArrayList<>();
             if (!isDuplicates(second, partners)) {
                 partners.add(second);
             }
 
             date.put(first, partners);
-            for (String partner : partners) {
-                System.out.println(first + " " + partner);
+            for (Person partner : partners) {
+                System.out.println(first.getName() + " " + partner.getName());
             }
 
             //test
             System.out.println("\nPrinting Hash Map\n");
-            for (String key : date.keySet()) {
-                System.out.printf("%s , %s \n", key, date.get(key));
+            for (Person key : date.keySet()) {
+                System.out.printf("%s , %s \n", key.getName(), date.get(key));
             }
 
 
@@ -103,17 +103,12 @@ public class Main {
 
     }
 
-    public static boolean isDuplicates(String partner, List<String> partners) {
-        for (String p : partners) {
-            if (partners.contains(p)) {
+    public static boolean isDuplicates(Person person, List<Person> partners) {
+        for (Person p : partners) {
+            if (p.equals(person)) {
                 return true;
             }
         }
         return false;//CODE!!!
-    }
-
-    public static List<String> getPartners(String first) {
-        partnerList.add(first);
-        return partnerList;
     }
 }
