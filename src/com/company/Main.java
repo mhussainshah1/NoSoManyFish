@@ -27,12 +27,35 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         List<Person> people = new ArrayList<>();
-        people.add(new Person("Tolali","Male"));
-        people.add(new Person("Muhammad","Male"));
-        people.add(new Person("John","Male"));
-        people.add(new Person("Alice","Female"));
-        people.add(new Person("Tracy","Female"));
-        people.add(new Person("Melanie","Female"));
+        people.add(new Person("Male","Simon"));
+        people.add(new Person("Male","Michael"));
+        people.add(new Person("Male","John"));
+        people.add(new Person("Female","Lisa"));
+        people.add(new Person("Female","Sarah"));
+        people.add(new Person("Female","Melanie"));
+
+        List<Person> matchPeople = new ArrayList<>();
+
+//        for (int i = 1; i < 11; i++) {
+            for (int j = 0; j < 2 ; j++) {
+                int index = (int) (Math.random() * people.size());
+                matchPeople.add(people.get(index));
+            }
+            String name1 = matchPeople.get(0).getName(),
+                    name2 = matchPeople.get(1).getName();
+            System.out.printf("%s asked %s out, and %s accepted",name1,name2,name2);
+            String[] text = {" played chess with ",
+                    " visited ",
+                    " went to dinner with ",
+                    " tipped over a glass during a date with ",
+                    " saw a movie with ",
+                    " played chess with ",
+                    " went to a meetup with "};
+            for (int k = 0; k < 3; k++) {
+                int index = (int) (Math.random() * text.length);
+                System.out.println("%s %s %s",name1,text[k],name2);
+            }
+//        }
 
 
     }
