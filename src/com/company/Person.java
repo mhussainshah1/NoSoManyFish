@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Person {
@@ -7,7 +8,7 @@ public class Person {
     private String name;
     private String gender;
     private Person partner; //current partner
-    private List<Person> partners; //list of all people date with
+    private List<Person> partners; //list of all people dated with
 
     public Person() {
     }
@@ -15,6 +16,7 @@ public class Person {
     public Person(String gender, String name) {
         this.gender = gender;
         this.name = name;
+        partners = new ArrayList<>();
     }
 
     public String getGender() {
@@ -37,6 +39,11 @@ public class Person {
         return partner;
     }
 
+    public void setPartner(Person partner) {
+        this.partner = partner;
+        partners.add(partner);
+    }
+
     public List<Person> getPartners() {
         return partners;
     }
@@ -45,8 +52,7 @@ public class Person {
         this.partners = partners;
     }
 
-    public void setPartner(Person partner) {
-        this.partner = partner;
-        partners.add(partner);
+    public boolean isDated(Person person) {
+        return partners.contains(person)? true : false;
     }
 }
