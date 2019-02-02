@@ -1,4 +1,5 @@
 package com.company;
+//This is example from stackoverflow.com
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,8 +18,8 @@ public class HashtableWithMultipleValues {
         peopleByForename.put("Bob", people);
 
 // read from it
-//        List<Person> bobs = peopleByForename["Bob"];
-//        Person bob1 = bobs[0];
-//        Person bob2 = bobs[1];
+        List<Person> bobs = peopleByForename.get("Bob");
+        Person bob1 = bobs.get(0);
+        Person bob2 = bobs.get(1);
     }
 }

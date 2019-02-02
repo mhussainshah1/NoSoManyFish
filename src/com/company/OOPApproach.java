@@ -1,9 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * You are going to write an application that simulates a dating service. It does not take any input.  Read through the
@@ -24,9 +22,6 @@ import java.util.Map;
  * They should also be randomly generated, and should be a list.
  */
 public class OOPApproach {
-    static Map<Person, List<Person>> date = new HashMap<>();
-    static List<String> partnerList = new ArrayList<>();
-
     public static void main(String[] args) {
         //You will start with a pre-set list of people (make 6 of them, 3 male, 3 female).
         List<Person> people = new ArrayList<>();
@@ -39,15 +34,15 @@ public class OOPApproach {
 
         List<String> history ;
         Person first, second;
-
+        int index1 , index2 , index;
         for (int i = 1; i < 11; i++) {
-            int index1 = 0, index2 = 0;
-
+            index1 = 0;
+            index2 = 0;
             while (index1 == index2) {
                 index1 = (int) (Math.random() * people.size());
                 index2 = (int) (Math.random() * people.size());
             }
-            // System.out.println(index1 +" "+index2);
+            //System.out.println(index1 +" "+index2);
 
             first = people.get(index1);
             second = people.get(index2);
@@ -69,7 +64,7 @@ public class OOPApproach {
                         "played chess with",
                         "went to a meetup with"};
                 for (int k = 0; k < 3; ) {
-                    int index = (int) (Math.random() * text.length);
+                    index = (int) (Math.random() * text.length);
                     if (!history.contains(text[index])) {
                         history.add(text[index]);
                         System.out.printf("%s %s %s %n", first.getName(), text[index], second.getName());
